@@ -30,3 +30,6 @@ ENV LANG="ja_JP.UTF-8" \
     LANGUAGE="ja_JP:ja" \
     LC_ALL="ja_JP.UTF-8"
 RUN dpkg-reconfigure locales
+# タイムゾーン
+RUN apt install -y tzdata && apt-get clean && rm -rf /var/lib/apt/lists/*
+ENV TZ Asia/Tokyo
