@@ -24,12 +24,10 @@ RUN	git clone --depth 1 https://github.com/losnoco/vgmstream ~/vgmstream &&\
 RUN apt-get -y install build-essential python2.7
 
 # 日本語環境に
-RUN apt-get -y install locales dialog
-RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG="ja_JP.UTF-8" \
-    LANGUAGE="ja_JP:ja" \
-    LC_ALL="ja_JP.UTF-8"
-RUN dpkg-reconfigure locales
+RUN apt-get install -y locales \
+    && locale-gen ja_JP.UTF-8 \
+    && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc
+
 # タイムゾーン
 RUN apt install -y tzdata && apt-get clean && rm -rf /var/lib/apt/lists/*
 ENV TZ Asia/Tokyo
