@@ -13,7 +13,7 @@ RUN apt-get update
 RUN	apt-get -y install gcc g++ cmake make autoconf automake libtool git
 RUN apt-get -y install libmpg123-dev libvorbis-dev libspeex-dev audacious-dev audacious libglib2.0-dev libgtk2.0-dev libpango1.0-dev libao-dev liblz4-tool sqlite3 perl pkg-config
 RUN	pkg-config --modversion audacious
-RUN	git clone --depth 1 https://github.com/losnoco/vgmstream ~/vgmstream &&\
+RUN	git clone --depth 1 https://github.com/losnoco/vgmstream ~/vgmstream -b r1640 &&\
 	cd ~/vgmstream &&\
 	mkdir -p build && cd build &&\
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ../ &&\
